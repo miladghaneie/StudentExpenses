@@ -48,7 +48,7 @@
 					</a>
 					<ul class="sub-menu">
 						<li >
-							<a href="/#">
+							<a href="/admin/buy">
 								خرید جدید
 							</a>
 						</li>
@@ -117,7 +117,7 @@
                         <i class="fa fa-angle-left"></i>
                     </li>
 
-                    <li><a href="#"> خرید جدید </a></li>
+                    <li class="buys"><a href="#"> خرید جدید </a></li>
 
                     <li class="pull-right">
                         <i class="fa fa-calendar"></i>
@@ -203,7 +203,11 @@
 	</div>
  <script src='{{static_url("Admin/plugins/jquery-1.10.2.min.js" )}}'type="text/javascript"></script>
     <script>
-
+        $(document).ready(function(){
+            $(".buys").click(function(){
+               $(".sub-menu").toggle();
+            });
+        });
         $('#form_addbuy').submit(function (event) {
         event.preventDefault();
         var formData = new FormData($(this)[0]);

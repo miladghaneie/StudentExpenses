@@ -151,8 +151,8 @@
 				</li>
 
 
-				<li class="">
-					<a href="javascript:;">
+				<li class="buys">
+					<a href="#">
 					<i class="fa fa-shopping-cart"></i>
 					<span class="title"> خرید ها </span>
 					<span class="arrow "></span>
@@ -270,6 +270,9 @@
 
 	<script>
 		jQuery(document).ready(function() {
+            $(".buys").click(function(){
+               $(".sub-menu").toggle();
+            });
 		   App.init(); // initlayout and core plugins
 		   Index.init();
 		   Index.initJQVMAP(); // init index page's custom scripts

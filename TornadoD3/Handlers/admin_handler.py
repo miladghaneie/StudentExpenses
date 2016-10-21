@@ -8,8 +8,18 @@ from index_handler import TornadoRequestBase
 from index_handler import authentication
 from pycket.session import SessionManager
 import uuid, os
-
+import requests
+import  json
 import jdatetime
+
+
+host_url = "http://127.0.0.1:8085"
+
+
+url_pattern = {
+    'create':'/insert'
+}
+
 
 
 class UploadImageUserHandler(TornadoRequestBase):
@@ -85,6 +95,7 @@ class add_buy_Handler(TornadoRequestBase):
         self.render('admin/add_buy.html', date=date, user=self.user, all_user=all_user)
 
     def post(self, *args, **kwargs):
+        url = host_url + url_pattern['create']
 
         payer_id = self.get_argument('payer')
         amount = self.get_argument('amount')
@@ -95,6 +106,7 @@ class add_buy_Handler(TornadoRequestBase):
         id_admin = self.user['id_admin']
         date = self.get_argument('date')
         bool_accept = False
+        response = requests.post(url,data=json.dumps({'payer_id':payer_id,'amount':amount,'concern':concern,'per_share':per_share,'date':date}))
 
         for i in self.request.arguments:
             if self.get_argument(i, None) == "":
